@@ -1,0 +1,34 @@
+#viewHighScores{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    margin: 5px;
+    /* background-color: blue; */
+}
+
+#timer{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    margin: 5px;
+    /* background-color: blue; */
+}
+header{
+    background-color: aqua;
+    height: 40px;
+}
+#questionBox{
+    position: relative;
+    padding-top: 20px;
+    background-color: yellow;
+}
+article{
+    position: relative;
+    display: inline;
+    text-align: center;
+}
+#response{
+    position: relative;
+}
