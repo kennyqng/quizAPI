@@ -1,9 +1,3 @@
-var newH1 = document.createElement("p");
-
-document.body.appendChild(newH1);
-
-newH1.textContent="hello, it's working";
-
 // timer
 // start button
 // view high scores
@@ -16,10 +10,16 @@ newH1.textContent="hello, it's working";
 var time = 60;
 var timeDisplay = document.getElementById("timeDisplay");
 var questionsArray =[
-    {question:"What is JS?",
-    choices:["javascipt","blah","ok, idk", "i give up"]}, 
-    {question:"Which is the correct JQUERY syntax?"}, 
-    {question:"how many time will this loop? \n(var i =0; i < 5; i++){}"}];
+    {question:"Commonly used data types DO NOT include:",
+    choices:["Strings","Boolean","Alerts", "Numbers"]}, 
+    {question:"The condition in an if/else statement is enclosed within _______.",
+    choices:["Quotes", "Curly brackets", "Parenthesis", "Square brackets"]}, 
+    {question: "Arrays in JavaScript can be used to store ________.",
+    choices: ["Numbers and strings", "Other arrays", "Boolean", "All of the above"]},
+    {question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choices:["Javascript", "Terminal/Bash", "for loops", "Console.log()"]},
+    {question:"how many time will this loop? \n(var i =0; i < 5; i++){}",
+    choices: ["5", "4", "3", "1"]}];
 
     // questionsArray[0].question; 
     // questionsArray[0].choices[0];
@@ -50,15 +50,27 @@ var start = document.createElement("button");
 buttonsBox.appendChild(start);
 start.textContent = "Start";
 start.addEventListener("click", function(){
-    // start = false;
-    buttonsBox.children[0].textContent = "Let's go!";
+    start.remove();
     info.textContent = "";
-    messageTop.textContent = questionsArray[0].question;
-    for (var i = 0; i < questionsArray[0].choices.length; i++){
-        var btn = document.createElement("button");
-        btn.textContent = questionsArray[0].choices[i];
-        buttonsBox.appendChild(btn);
-    }
+    questionGenerator(0);
 })
 
 
+
+function questionGenerator(number){
+    messageTop.textContent = questionsArray[number].question;
+    for (var i = 0; i < questionsArray[number].choices.length; i++){
+        var btn = document.createElement("button");
+        btn.setAttribute("id", "answer"+i);
+        btn.textContent = questionsArray[number].choices[i];
+        buttonsBox.appendChild(btn);
+    }
+}
+function questionRemover(number){
+    for (var i = 0; i < questionsArray[number].choices.length; i++){
+        var a1 = document.getElementById("answer"+i);
+        a1.remove();
+    }
+    
+
+}

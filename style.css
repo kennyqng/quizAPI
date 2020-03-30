@@ -24,6 +24,10 @@ header{
     padding-top: 20px;
     background-color: yellow;
 }
+#infoBox{
+    padding-left: 15%;
+    padding-right: 15%;
+}
 article{
     position: relative;
     display: inline;
