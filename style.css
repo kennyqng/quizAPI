@@ -1,10 +1,23 @@
-#viewHighScores{
+article div{
+    padding: 10px;
+}
+body{
+    font-family: "Segoe UI", "Arial","sans-serif";
+}
+button{
+    background-color: #343a40;
+    font-size: 16px;
+    color: white;
+    padding: 15px 20px;
+}
+#viewHighScore{
     position: fixed;
     top: 0;
     left: 0;
     padding: 20px;
     margin: 5px;
-    /* background-color: blue; */
+    color: white;
+
 }
 
 #timer{
@@ -13,17 +26,19 @@
     right: 0;
     padding: 20px;
     margin: 5px;
-    /* background-color: blue; */
+    color: white;
 }
 header{
-    background-color: aqua;
+    background-color: #343a40;
     height: 40px;
 }
 #questionBox{
     position: relative;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: yellow;
+    background-color: #17a2b8;
+    color: white;
+
 }
 #infoBox{
     padding-left: 15%;
@@ -37,11 +52,15 @@ article{
 #response{
     position: relative;
 }
-#highScoreForm{
-    display: none;
-}
 #scoreList{
     padding-left: 45%;
     width: 80px;
     height: auto;
+}
+#highScoreForm{
+    display: none;
+}
+#highScoreForm{
+    background-color: rgba(0, 0, 0, 0.055);
+    padding: 10px;
 }

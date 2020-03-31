@@ -1,8 +1,9 @@
 //variables
+var viewHighScore = document.getElementById("viewHighScore");
 var messageTop = document.getElementById("messageTop");
 var messageBottom = document.getElementById("messageBottom");
 var info = document.getElementById("infoBox");
-var buttonsBox = document.getElementById("response");
+var response = document.getElementById("response");
 var startBtn = document.getElementById("startBtn");
 var highScoreForm = document.getElementById("highScoreForm");
 var submitForm = document.getElementById("submitForm");
@@ -13,7 +14,6 @@ var scoreList = document.getElementById("scoreList");
 var submitBtn = document.getElementById("submitBtn");
 // creating a localList variable connect a local storage called "localList"
 var localList = localStorage.getItem("localList");
-
 
 
 var number = 0;
@@ -90,7 +90,7 @@ function questionGenerator(n){
         btn.setAttribute("id", "answer"+i);
         btn.setAttribute("class", "btn-answer");
         btn.textContent = questionsArray[n].choices[i];
-        buttonsBox.appendChild(btn);
+        response.appendChild(btn);
     }
     
     var answerBtn = document.getElementsByClassName("btn-answer");
@@ -144,20 +144,16 @@ function showScore (str){
     showDiv(highScoreForm);
     
     submitBtn.addEventListener("click", function(){
-        // var newDiv = document.createElement("div");
-        // highScoreForm.appendChild(newDiv);
         if(formValue.value == "" || formValue.value == null){
             alert("Please enter your initial.");
         }
         else{
             // localList = "";
             localList += "\n" + formValue.value + ": " + point + "pts";
-
               // displayed-list content updated to variable localList
             scoreList.textContent = localList;
               // saving localList variable to local storage "localList"
             localStorage.setItem("localList", localList);
-            // newDiv = formValue.value + ": " + point + "pts\n";
             submitForm.reset();
             showDiv(startBtn);
         }
@@ -165,11 +161,6 @@ function showScore (str){
     })
 }
 
-// function setAttributes (el, attrs){
-//     for(var key in attrs){
-//         el.setAttribute(key, attrs[key]);
-//     }
-// } 
 function hideDiv(divName){
     divName.style.display = "none";
 }
@@ -177,5 +168,16 @@ function showDiv(divName){
     divName.style.display = "block";    
 }
 
+function toggleScore(){
+    if(highScoreForm.style.display == "none"){
+        showDiv(highScoreForm);
+    }
+    else if (highScoreForm.style.display == "block"){
+        hideDiv(highScoreForm);
+    }
+
+}
+
 // start
+scoreList.textContent = localList;
 startQuiz();
