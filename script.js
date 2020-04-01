@@ -65,7 +65,6 @@ var questionsArray =[
             point = 0;
             hideDiv(startBtn);
             welcome.textContent = "";
-            console.log("array length: "+questionsArray.length);
             
         interval = setInterval(function(){
             time--;
@@ -98,13 +97,8 @@ function questionGenerator(n){
         answerBtn[i].addEventListener("click", 
         function (){
             userSelection = this.textContent;
-            console.log("correct answer " + questionsArray[n].correctAnswer);
-            console.log("user selected " + userSelection);
-            console.log("compare "+userSelection.localeCompare(questionsArray[n].correctAnswer));
-            // compare: 0 means equals
             if(userSelection == questionsArray[n].correctAnswer){
                 point++;
-                console.log("points: " + point);
                 questionRemover(n);
                 nextQuestion();
                 messageBottom.textContent = "Correct!";
@@ -143,24 +137,24 @@ function showScore (str){
     info.textContent = "Your final score: " + point;
     showDiv(highScoreForm);
     
-    submitBtn.addEventListener("click", function(){
-        if(formValue.value == "" || formValue.value == null){
-            alert("Please enter your initial.");
-        }
-        else{
-            // localList = "";
-            localList += "\n" + formValue.value + ": " + point + "pts";
-              // displayed-list content updated to variable localList
-            scoreList.textContent = localList;
-              // saving localList variable to local storage "localList"
-            localStorage.setItem("localList", localList);
-            submitForm.reset();
-            showDiv(startBtn);
-        }
-        event.preventDefault();
-    })
 }
 
+submitBtn.addEventListener("click", function(){
+    event.preventDefault();
+    if(formValue.value === "" || formValue.value === null){
+        alert("Please enter your initial.");
+    }
+    else{
+        // localList = "";
+        localList += "\n" + formValue.value + ": " + point + "pts";
+          // displayed-list content updated to variable localList
+        scoreList.textContent = localList;
+          // saving localList variable to local storage "localList"
+        localStorage.setItem("localList", localList);
+        submitForm.reset();
+        showDiv(startBtn);
+    }
+})
 function hideDiv(divName){
     divName.style.display = "none";
 }
@@ -179,5 +173,8 @@ function toggleScore(){
 }
 
 // start
+if(localList === null){
+    localList = "------------";
+}
 scoreList.textContent = localList;
 startQuiz();
